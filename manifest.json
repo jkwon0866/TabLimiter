@@ -1,0 +1,17 @@
+{
+	"manifest_version":2,
+        "name":"TabLimiter",
+	"version":"1.0",
+
+	"browser_action":{
+		"default_icon": "icons/icon.png",
+		"default_title": "TabLimiter",
+		"default_popup": "popup/limiter.html"
+	},
+	"background":{
+		"scripts":["background.js"]
+	},
+	"options-ui":{
+		"page": "options/options.html"
+	}
+}
