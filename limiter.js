@@ -1,14 +1,12 @@
+//global variables in scope of webextension scripts
 let count = 0;
 let limit = 15;
+let overflowed = false;
+
+//set count to number of tabs
 browser.tabs.query({}).then((tabArray)=>{
 	count = tabArray.length;
-	browser.notifications.create({
-		"type": "basic",
-		"title":"tab number",
-		"message": count.toString()
-	});
 });
-let overflowed = false;
 //have the background listen for tab creation event.
 browser.tabs.onCreated.addListener((tab)=>{
 	if(count < limit){
@@ -18,13 +16,9 @@ browser.tabs.onCreated.addListener((tab)=>{
 		browser.tabs.remove(tab.id);
 		overflowed = true;
 	}
-	browser.notifications.create({
-		"type": "basic",
-		"title":"tab number",
-		"message": count.toString()
-	});
 });
 
+//have the background listen for tab removal event (excluding automatic removal)
 browser.tabs.onRemoved.addListener((tab)=>{
 	if(overflowed){
 		overflowed = false;
@@ -33,9 +27,4 @@ browser.tabs.onRemoved.addListener((tab)=>{
 	if(count > 0){
 		count -= 1;
 	}
-	browser.notifications.create({
-		"type": "basic",
-		"title":"tab number",
-		"message": count.toString()
-	});
 });

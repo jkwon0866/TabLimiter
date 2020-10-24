@@ -1,14 +1,5 @@
-browser.notifications.create({
-	"type":"basic",
-	"title":"maxTab",
-	"message": "update_limit.js has started"
-});
+//listens for updates to max tabs allowed
 browser.runtime.onMessage.addListener((message)=>{
 	limit = parseInt(message.maxCount);
-	browser.notifications.create({
-                "type":"basic",
-                "title":"maxTab",
-                "message": message.maxCount
-        });
 });
 
