@@ -7,7 +7,7 @@
 		"default_title": "TabLimiter"
 	},
 	"background":{
-		"scripts":["background.js"]
+		"scripts":["limiter.js","update_limit.js"]
 	},
 	"options_ui":{
 		"page": "options/options.html"

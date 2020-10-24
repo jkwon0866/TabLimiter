@@ -1,4 +1,5 @@
 let count = 0;
+let limit = 15;
 browser.tabs.query({}).then((tabArray)=>{
 	count = tabArray.length;
 	browser.notifications.create({
@@ -10,7 +11,7 @@ browser.tabs.query({}).then((tabArray)=>{
 let overflowed = false;
 //have the background listen for tab creation event.
 browser.tabs.onCreated.addListener((tab)=>{
-	if(count < 21){
+	if(count < limit){
 		count += 1;
 	}
 	else{
