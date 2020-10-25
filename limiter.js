@@ -9,6 +9,7 @@ browser.tabs.query({}).then((tabArray)=>{
 });
 //have the background listen for tab creation event.
 browser.tabs.onCreated.addListener((tab)=>{
+	if(!limiter_on) return;
 	if(count < limit){
 		count += 1;
 	}
@@ -20,6 +21,7 @@ browser.tabs.onCreated.addListener((tab)=>{
 
 //have the background listen for tab removal event (excluding automatic removal)
 browser.tabs.onRemoved.addListener((tab)=>{
+	if(!limiter_on) return;
 	if(overflowed){
 		overflowed = false;
 		return;

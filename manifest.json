@@ -1,18 +1,26 @@
 {
 	"manifest_version":2,
         "name":"TabLimiter",
+	"author":"James Kwon",
 	"version":"1.0",
 
+	"description":"Limits tabs to a customizable amount.",
 	"browser_action":{
-		"default_title": "TabLimiter"
+		"default_title": "TabLimiter",
+		"default_icon": "icons/tab-24px.svg"
+	},
+	"icons":{
+		"48": "icons/tab-24px.svg",
+		"96": "icons/tab-24px.svg"
 	},
 	"background":{
-		"scripts":["limiter.js","update_limit.js"]
+		"scripts":["limiter.js","update_limit.js","enable_button.js"]
 	},
 	"options_ui":{
 		"page": "options/options.html"
 	},
 	"permissions":[
-		"tabs"
+		"tabs","management","notifications"
 	]
+	
 }
