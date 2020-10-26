@@ -1,7 +1,9 @@
 //global variables in scope of webextension scripts
 let count = 0;
-let limit = 15;
 let overflowed = false;
+let limiter_on = true;
+var last_button_state = "on"
+
 
 //set count to number of tabs
 browser.tabs.query({}).then((tabArray)=>{
