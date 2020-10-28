@@ -5,17 +5,10 @@ let enabler = document.getElementById("on_off");
 
 //started when document is loaded
 document.addEventListener("DOMContentLoaded",()=>{
-	/*
-	browser.notifications.create({
-	    "type": "basic",
-	    "title": "Changed controller value!",
-	    "message": "heyo"
-	  });
-	  */
 	browser.storage.local.get("maxtabs")
 	.then((result)=>{
 		if(result.maxtabs == undefined){
-			controller.value = "12";
+			controller.value = "7";
 		}
 		else{
 			controller.value = result.maxtabs;
@@ -25,6 +18,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 	.then((result)=>{
 		if(result.onoff == undefined){
 			enabler.value = "on";
+			browser.runtime.sendMessage({
+				limit_ : controller.value,
+				limiter_on_ : "on"
+			});
 		}
 		else{
 			enabler.value = result.onoff;
@@ -41,13 +38,6 @@ controller.addEventListener("change",()=>{
                 limit_ : controller.value,
 		limiter_on_ : enabler.value == "on"
         });
-	/*
-	browser.notifications.create({
-	    "type": "basic",
-	    "title": "Changed controller value!",
-	    "message": controller.value
-	  });
-	  */
 	browser.storage.local.set({
 		maxtabs : controller.value
 	});

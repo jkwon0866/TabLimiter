@@ -10,17 +10,7 @@ browser.tabs.query({}).then((tabArray)=>{
 //have the background listen for tab creation event.
 browser.tabs.onCreated.addListener((tab)=>{
 	if(limiter_on){
-		/*
-		browser.notifications.create({ "type": "basic",
-		    "title": "Limiter_on status",
-		    "message": limiter_on.toString()
-		  });
-		  */
 		if(count < limit){
-		browser.notifications.create({ "type": "basic",
-		    "title": "Increasing!",
-		    "message": count.toString()
-		  });
 			count += 1;
 		}
 		else{
@@ -38,9 +28,5 @@ browser.tabs.onRemoved.addListener((tab)=>{
 	}
 	if(count > 0){
 		count -= 1;
-	browser.notifications.create({ "type": "basic",
-	    "title": "Decreasing!",
-	    "message": count.toString()
-	  });
 	}
 });

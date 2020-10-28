@@ -1,4 +1,4 @@
-let limit = 15;
+let limit = 7;
 let limiter_on = true;
 //listens for updates to max tabs allowed
 browser.runtime.onMessage.addListener((message)=>{
